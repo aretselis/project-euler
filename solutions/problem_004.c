@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <math.h>
 
 #define MAX_DIGITS 6  // Max digits number for a product of two 3-digit numbers
+#define DIGITS 3
 
 int palindrome_number_check(int n)
 {
@@ -35,11 +37,28 @@ int palindrome_number_check(int n)
     return outcome;
 }
 
+int find_max_palindrome(){
+    // Computes the max palindrome product and returns it
+    int first_number, second_number, product, pali_check, answer=1;   
+    for(first_number = pow(10, DIGITS) - 1; first_number>=pow(10, DIGITS-1); first_number--)
+    {
+        for(second_number = pow(10, DIGITS) - 1; second_number>=pow(10, DIGITS-1); second_number--)
+        {
+            product = first_number * second_number;
+            pali_check = palindrome_number_check(product);
+            if (pali_check == 1 && product>answer)
+            {
+                answer = product;
+            }
+        }
+    }
+    return answer;
+}
+
 int main()
 {
-    int first_number, second_number;
-    int number = 102231;
-    first_number = palindrome_number_check(number);
-    printf("Result is %d", first_number);
+    int result;
+    result = find_max_palindrome();
+    printf("The result is %d", result);
     return 0;
 }
