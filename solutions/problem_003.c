@@ -3,7 +3,7 @@
 
 int max_prime_factor(long long int number)
 {
-    long long int counter, max_prime, product=1;
+    long long int counter, max_prime;
 
     // Remove 2s from search
     while(number%2==0)
@@ -15,7 +15,6 @@ int max_prime_factor(long long int number)
     for(counter=3; counter <= sqrt(number); counter += 2)
     {
         if (number%counter == 0){
-            product = 1*counter;
             while(number%counter==0)
             {
                 max_prime = counter;
