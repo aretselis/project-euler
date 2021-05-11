@@ -30,8 +30,8 @@ int prime_check(long int number)
 
 void prime_number_finder(long int n)
 {
-    long int result = 0;
-    long int counter = 0, i, j, current_number=4;
+    long int result;
+    long int counter = 0, i;
     
     for(i=2; counter<n; i++){
         if(prime_check(i)==1)
